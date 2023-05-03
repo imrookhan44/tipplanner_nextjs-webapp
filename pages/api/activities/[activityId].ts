@@ -1,19 +1,20 @@
 import { db } from '../../../firebaseConfig'
 import { collection, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 
- async function activity(req: any, res: any ) {
+async function activity(req: any, res: any) {
   const activityCollectionRef = collection(db, 'activities');
   const { activityId } = req.query;
   try {
 
     if (req.method === 'PUT') {
-      const docRef = doc(db, 'activities', activityId )
+      const docRef = doc(db, 'activities', activityId)
       await updateDoc(docRef, req.body)
       res.status(200).json({ message: 'activity was successfully updated' })
     } else if (req.method === 'GET') {
-      const docRef = doc(db, 'activities', activityId );
+      const docRef = doc(db, 'activities', activityId);
       const docSnap = await getDoc(docRef)
       const response = docSnap.data()
+      console.log("res in api", response)
       if (response) {
         response.id = activityId
       }
@@ -22,7 +23,7 @@ import { collection, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from "
       await addDoc(activityCollectionRef, req.body)
       res.status(200).json({ message: 'your activity was successfully added' });
     } else if (req.method === 'DELETE') {
-      const docRef = doc(db, 'activities', activityId )
+      const docRef = doc(db, 'activities', activityId)
       await deleteDoc(docRef)
       res.status(200).json({ message: 'your day was successfully deleted' });
     }

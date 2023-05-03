@@ -33,8 +33,8 @@ export async function getServerSideProps(context) {
 
   const activitiesCollectionRef = collection(db, 'activities');
   const queryForHomePage = query(activitiesCollectionRef, where('draftMode', '==', false), limit(3))
-  const data = await getDocs(queryForHomePage) 
-  
+  const data = await getDocs(queryForHomePage)
+
   const activitiesDocsArray: any[] = []
   data.forEach((doc) => {
     const data = doc.data()
@@ -81,7 +81,6 @@ export default function Home(props: any) {
     e.stopPropagation()
   }
 
-  console.log(props)
 
   const redirectToActivity = (activityId: any) => {
     router.push(`/activities/${activityId}`)
@@ -110,7 +109,7 @@ export default function Home(props: any) {
               <div key={index} onClick={() => redirectToActivity(activity.id)} className={styles.cardContainer}>
                 <Panel header={activity.title} shaded bordered bodyFill style={{ width: 350 }}>
                   <Carousel onClick={stopPropogation} className="custom-slider">
-                    <InstagramEmbed url={activity.thumbnailLink} width={200}/>
+                    <InstagramEmbed url={activity.thumbnailLink} width={200} />
                     {/* <iframe src={`https://www.google.com/maps/d/embed?${activity.mapLink}`} width="200" height="200"></iframe> */}
                   </Carousel>
                   <Panel header={`User: ${activity.owner}`}>
@@ -118,7 +117,7 @@ export default function Home(props: any) {
                       {`Address: ${activity.address}`}
                     </p>
                     <p className={styles.textOverflow}>
-                    {`Duration: ${activity.duration}`}
+                      {`Duration: ${activity.duration}`}
                     </p>
                     <p className={styles.textOverflow}>
                       {`Budget: ${activity.budget}`}
@@ -129,7 +128,7 @@ export default function Home(props: any) {
             )
           })}
         </div>
-         <Link href='/days'>
+        <Link href='/days'>
           <h2>All Days →</h2>
         </Link>
         <div className={styles.cardsContainer}>
@@ -138,7 +137,7 @@ export default function Home(props: any) {
               <div key={index} onClick={() => redirectToDay(day.id)} className={styles.cardContainer}>
                 <Panel header={day.title} shaded bordered bodyFill style={{ width: 350 }} className={styles.dayPanel}>
                   <Carousel onClick={stopPropogation} className="custom-slider">
-                    <InstagramEmbed url={day.thumbnailLink} width={200}/>
+                    <InstagramEmbed url={day.thumbnailLink} width={200} />
                     <iframe src={`https://www.google.com/maps/d/embed?${day.mapLink}`} width="200" height="200"></iframe>
                   </Carousel>
                   <Panel header={`User: ${day.owner}`}>
@@ -163,7 +162,7 @@ export default function Home(props: any) {
               <div key={index} onClick={() => redirectToItinerary(itinerary.id)} className={styles.cardContainer}>
                 <Panel header={itinerary.title} shaded bordered bodyFill style={{ width: 350 }} className={styles.itineraryPanel}>
                   <Carousel onClick={stopPropogation} className="custom-slider">
-                    <InstagramEmbed url={itinerary.thumbnailLink} width={200}/>
+                    <InstagramEmbed url={itinerary.thumbnailLink} width={200} />
                   </Carousel>
                   <Panel header={`User: ${itinerary.owner}`}>
                     <p className={styles.textOverflow}>
@@ -178,7 +177,7 @@ export default function Home(props: any) {
             )
           })}
         </div>
-          
+
       </section>
     </>
   );

@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
     method: 'post',
     url: `http://localhost:3000/api/activities/userActivities`,
     data: session?.user
-  }) 
+  })
 
   return {
     props: {
@@ -49,19 +49,19 @@ export default function UserActivities(props) {
       <div>
         {props.arrayOfActivities.length > 0 && props?.arrayOfActivities.map((activity: any, key: any) => {
           return (
-              <Panel key={key} header={activity.title} shaded collapsible bordered>
-                <div>
-                  <Link href={`/user/activities/${activity.id}`}>Edit Activity</Link>
-                </div>
-              </Panel>
+            <Panel key={key} header={activity.title} shaded collapsible bordered>
+              <div>
+                <Link href={`/user/activities/${activity.id}`}>Edit Activity</Link>
+              </div>
+            </Panel>
           )
         })}
-        </div>
-        <div className={styles.link}>
-          <Link href='/create/activity'>
-            <button>Create New Activity</button>
-          </Link>
-        </div>
+      </div>
+      <div className={styles.link}>
+        <Link href='/create/activity'>
+          <button>Create New Activity</button>
+        </Link>
+      </div>
     </>
   )
 }

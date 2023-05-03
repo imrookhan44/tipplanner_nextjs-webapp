@@ -14,6 +14,7 @@ import {
 } from 'rsuite';
 
 export async function getServerSideProps(context) {
+  console.log("params:", context)
   const id = context.params.id
   const session = await getSession(context)
   if (!session) {
@@ -142,7 +143,7 @@ export default function EditActivity(props) {
       method: 'put',
       url: `/api/activities/${id}`,
       data: activityData
-    }) 
+    })
 
     router.reload()
   }
@@ -161,7 +162,7 @@ export default function EditActivity(props) {
     await axios({
       method: 'delete',
       url: `/api/activities/${id}`
-    }) 
+    })
 
     router.push('/user/activities')
   }
@@ -176,152 +177,152 @@ export default function EditActivity(props) {
           <h1>{props.data.title}</h1>
         </div>
         <div className={styles.formContainer}>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`title`}</label>
-              <Input
-                type="text"
-                value={activityTitle}
-                onChange={activityTitleHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{'description'}</label>
-              <Input as='textarea'
-                value={description}
-                onChange={descriptionHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`duration`}</label>
-              <Input
-                type="text"
-                value={duration}
-                onChange={durationHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Budget`}</label>
-              <Input
-                type="text"
-                value={budget}
-                onChange={budgetHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`rating (? / 5)`}</label>
-              <Input
-                type="number"
-                value={rating}
-                onChange={ratingHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Start Time (00:00 - 23:59)`}</label>
-              <Input
-                type="text"
-                value={startTime}
-                onChange={startTimeHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`End Time (00:00 - 23:59)`}</label>
-              <Input
-                type="text"
-                value={endTime}
-                onChange={endTimeHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Address`}</label>
-              <Input
-                type="text"
-                value={address}
-                onChange={addressHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Map Link`}</label>
-              <Input as='textarea'
-                value={mapLink}
-                onChange={mapLinkHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Thumbnail Link`}</label>
-              <Input as='textarea'
-                value={thumbnailLink}
-                onChange={thumbnailLinkHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Youtube Link`}</label>
-              <Input as='textarea'
-                value={youtubeLink}
-                onChange={youtubeLinkHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Trip Advisor Link`}</label>
-              <Input as='textarea'
-                value={tripAdvisorLink}
-                onChange={setTripAdvisorLinkHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Google Location Link`}</label>
-              <Input as='textarea'
-                value={googleLocationLink}
-                onChange={setGoogleLocationLinkHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Yelp Link`}</label>
-              <Input as='textarea'
-                value={yelpLink}
-                onChange={yelpLinkHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Draft Mode`}</label>
-              <Toggle
-                checked={draftMode}
-                onChange={draftModeHandler}
-              />
-            </div>
-            <div className={styles.inputContainer}>
-              <label className={styles.formLabel}>{`Tour Guide`}</label>
-              <Toggle
-                checked={tourGuide}
-                onChange={tourGuideHandler}
-              />
-            </div>
-            <div>
-              <Button onClick={saveActivityEditSubmitHandler} appearance="primary">
-                Save Edit
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`title`}</label>
+            <Input
+              type="text"
+              value={activityTitle}
+              onChange={activityTitleHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{'description'}</label>
+            <Input as='textarea'
+              value={description}
+              onChange={descriptionHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`duration`}</label>
+            <Input
+              type="text"
+              value={duration}
+              onChange={durationHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Budget`}</label>
+            <Input
+              type="text"
+              value={budget}
+              onChange={budgetHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`rating (? / 5)`}</label>
+            <Input
+              type="number"
+              value={rating}
+              onChange={ratingHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Start Time (00:00 - 23:59)`}</label>
+            <Input
+              type="text"
+              value={startTime}
+              onChange={startTimeHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`End Time (00:00 - 23:59)`}</label>
+            <Input
+              type="text"
+              value={endTime}
+              onChange={endTimeHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Address`}</label>
+            <Input
+              type="text"
+              value={address}
+              onChange={addressHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Map Link`}</label>
+            <Input as='textarea'
+              value={mapLink}
+              onChange={mapLinkHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Thumbnail Link`}</label>
+            <Input as='textarea'
+              value={thumbnailLink}
+              onChange={thumbnailLinkHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Youtube Link`}</label>
+            <Input as='textarea'
+              value={youtubeLink}
+              onChange={youtubeLinkHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Trip Advisor Link`}</label>
+            <Input as='textarea'
+              value={tripAdvisorLink}
+              onChange={setTripAdvisorLinkHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Google Location Link`}</label>
+            <Input as='textarea'
+              value={googleLocationLink}
+              onChange={setGoogleLocationLinkHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Yelp Link`}</label>
+            <Input as='textarea'
+              value={yelpLink}
+              onChange={yelpLinkHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Draft Mode`}</label>
+            <Toggle
+              checked={draftMode}
+              onChange={draftModeHandler}
+            />
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.formLabel}>{`Tour Guide`}</label>
+            <Toggle
+              checked={tourGuide}
+              onChange={tourGuideHandler}
+            />
+          </div>
+          <div>
+            <Button onClick={saveActivityEditSubmitHandler} appearance="primary">
+              Save Edit
+            </Button>
+            <Button color="red" appearance="primary" onClick={deleteActivityModalOpen}>
+              Delete Activity
+            </Button>
+          </div>
+          <Modal
+            open={isOpen}
+            onClose={deleteActivityModalClose}
+          >
+            <Modal.Header>
+              <Modal.Title>Delete Activity</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Are you sure you want to delete?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={deleteActivity} color="red" appearance="primary">
+                Delete
               </Button>
-              <Button color="red" appearance="primary" onClick={deleteActivityModalOpen}>
-                Delete Activity
+              <Button onClick={deleteActivityModalClose} appearance="subtle">
+                Cancel
               </Button>
-            </div>
-            <Modal
-        open={isOpen}
-        onClose={deleteActivityModalClose }
-      >
-        <Modal.Header>
-          <Modal.Title>Delete Activity</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to delete?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={deleteActivity} color="red" appearance="primary">
-            Delete
-          </Button>
-          <Button onClick={deleteActivityModalClose} appearance="subtle">
-            Cancel
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            </Modal.Footer>
+          </Modal>
         </div>
       </article>
       <div className={styles.titleContainer}>

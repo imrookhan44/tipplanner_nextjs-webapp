@@ -9,6 +9,7 @@ export async function getServerSideProps(context) {
 
   const activitiesResponse = await fetch(`http://localhost:3000/api/activities`)
   const activitiesData = await activitiesResponse.json()
+  console.log(activitiesData)
 
   // const daysResponse = await fetch(`http://localhost:3000/api/days`)
   // const daysData = await daysResponse.json()
@@ -57,20 +58,20 @@ export default function AllActivities(props: any) {
         <h1>All Activities</h1>
       </div>
       <div className={styles.centeredContainer}>
-      <div className={styles.cardsContainer}>
+        <div className={styles.cardsContainer}>
           {props.activitiesData.map((activity: any, index: number) => {
             return (
               <div key={index} onClick={() => redirectToActivity(activity.id)} className={styles.cardContainer}>
                 <Panel header={activity.title} shaded bordered bodyFill style={{ width: 350 }}>
                   <Carousel onClick={stopPropogation} className="custom-slider">
-                    <InstagramEmbed url={activity.thumbnailLink} width={200}/>
+                    <InstagramEmbed url={activity.thumbnailLink} width={200} />
                   </Carousel>
                   <Panel header={`User: ${activity.owner}`}>
                     <p className={styles.textOverflow}>
                       {`Address: ${activity.address}`}
                     </p>
                     <p className={styles.textOverflow}>
-                    {`Duration: ${activity.duration}`}
+                      {`Duration: ${activity.duration}`}
                     </p>
                     <p className={styles.textOverflow}>
                       {`Budget: ${activity.budget}`}

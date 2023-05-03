@@ -17,7 +17,7 @@ import { InstagramEmbed, YouTubeEmbed } from 'react-social-media-embed'
 
 export async function getServerSideProps(context) {
   const id = context.params.id
-  
+
   const response = await fetch(`http://localhost:3000/api/activities/${id}`)
   const activityData = await response.json()
 
@@ -51,85 +51,85 @@ export default function ViewActivity(props) {
       <Head>
         <title>{props.data.title}</title>
       </Head>
-        <div className={styles.titleContainer}>
-          <h1>{activity.title}</h1>
-          <Link href={`/user/${activity.owner}`}>
+      <div className={styles.titleContainer}>
+        <h1>{activity.title}</h1>
+        <Link href={`/user/${activity.owner}`}>
           <h4 className={styles.user}>{activity.owner}</h4>
-          </Link>
-        </div>
-        <div className={styles.formContainer}>
-          <List>
+        </Link>
+      </div>
+      <div className={styles.formContainer}>
+        <List>
+          <List.Item className={styles.centeredContainer}>
+            <InstagramEmbed url={activity.thumbnailLink} width={350} height={600} />
+          </List.Item>
+          {activity.youtubeLink &&
             <List.Item className={styles.centeredContainer}>
-              <InstagramEmbed url={activity.thumbnailLink} width={350} height={600}/>
+              <YouTubeEmbed url={activity.youtubeLink} width={350} height={300} />
             </List.Item>
-            {activity.youtubeLink &&
+          }
+          {activity.mapLink &&
             <List.Item className={styles.centeredContainer}>
-              <YouTubeEmbed url={activity.youtubeLink} width={350} height={300}/>
-            </List.Item> 
-            }
-            {activity.mapLink &&
-            <List.Item className={styles.centeredContainer}>
-               <iframe src={`https://www.google.com/maps/d/embed?${activity.mapLink}`} width="200" height="300"></iframe>
-            </List.Item> 
-            }
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Description</p>
-              <p className={styles.formInput}>{activity.description}</p>
+              <iframe src={`https://www.google.com/maps/d/embed?${activity.mapLink}`} width="200" height="300"></iframe>
             </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Budget</p>
-              <p className={styles.formInput}>{activity.budget}</p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Duration</p>
-              <p className={styles.formInput}>{activity.duration}</p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Start Time</p>
-              <p className={styles.formInput}>{activity.startTime}</p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>End Time</p>
-              <p className={styles.formInput}>{activity.endTime}</p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Rating</p>
-              <p className={styles.formInput}>{activity.endTime}</p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Address</p>
-              <p className={styles.formInput}>{activity.address}</p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Google Location</p>
-                <p className={styles.formInput}>
-                  <Link href={activity.googleLocationLink}>
-                  {activity.googleLocationLink}
-                  </Link>
-                </p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Trip Advisor</p>
-              <p className={styles.formInput}>
-                <Link href={activity.tripAdvisorLink}>
-                  {activity.tripAdvisorLink}
-                </Link>
-              </p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Yelp</p>
-              <p className={styles.formInput}>
-                <Link href={activity.yelpLink}>
+          }
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Description</p>
+            <p className={styles.formInput}>{activity.description}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Budget</p>
+            <p className={styles.formInput}>{activity.budget}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Duration</p>
+            <p className={styles.formInput}>{activity.duration}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Start Time</p>
+            <p className={styles.formInput}>{activity.startTime}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>End Time</p>
+            <p className={styles.formInput}>{activity.endTime}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Rating</p>
+            <p className={styles.formInput}>{activity.endTime}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Address</p>
+            <p className={styles.formInput}>{activity.address}</p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Google Location</p>
+            <p className={styles.formInput}>
+              <Link href={activity.googleLocationLink}>
+                {activity.googleLocationLink}
+              </Link>
+            </p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Trip Advisor</p>
+            <p className={styles.formInput}>
+              <Link href={activity.tripAdvisorLink}>
+                {activity.tripAdvisorLink}
+              </Link>
+            </p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Yelp</p>
+            <p className={styles.formInput}>
+              <Link href={activity.yelpLink}>
                 {activity.yelpLink}
-                </Link>
-              </p>
-            </List.Item>
-            <List.Item className={styles.centeredContainer}>
-              <p className={styles.formLabel}>Tour Guide</p>
-              <p className={styles.formInput}>{activity.tourGuide ? 'true' : 'false'}</p>
-            </List.Item>
-          </List>
-        </div>
+              </Link>
+            </p>
+          </List.Item>
+          <List.Item className={styles.centeredContainer}>
+            <p className={styles.formLabel}>Tour Guide</p>
+            <p className={styles.formInput}>{activity.tourGuide ? 'true' : 'false'}</p>
+          </List.Item>
+        </List>
+      </div>
     </>
   )
 }
@@ -263,7 +263,7 @@ export default function ViewActivity(props) {
 //       method: 'put',
 //       url: `/api/activities/${id}`,
 //       data: activityData
-//     }) 
+//     })
 
 //     router.reload()
 //   }
@@ -282,7 +282,7 @@ export default function ViewActivity(props) {
 //     await axios({
 //       method: 'delete',
 //       url: `/api/activities/${id}`
-//     }) 
+//     })
 
 //     router.push('/user/activities')
 //   }
