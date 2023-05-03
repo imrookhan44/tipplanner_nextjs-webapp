@@ -1,0 +1,40 @@
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardContainer:hover {
+  border: solid 3px lightgreen;
+  cursor: pointer;
+}
+
+.centeredContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textOverflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.description {
+  height: 100px;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
+.dayPanel {
+  background-color: lightyellow;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
